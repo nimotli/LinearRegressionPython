@@ -1,0 +1,1 @@
+This is a math based implementation of linear regression in python not using any machine learning library
