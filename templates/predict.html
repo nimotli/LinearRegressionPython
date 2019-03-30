@@ -59,15 +59,24 @@
     function predict()
     {   
         var featureNumber=parseInt('{{feat}}')
-
+        var features=[]
         for (let i = 0; i < featureNumber; i++) 
         {
-            
+            features.push($('#feat'+i).val())
         }
+
         var room=$('#room').val()
         var size=$('#size').val()
         theta="{{theta}}".split(',')
-        var val=parseFloat(theta[0])+parseFloat(theta[1])*size+parseFloat(theta[2])*room
+        var val=0;
+        for(let i = 0; i<theta.length; i++)
+        {
+            theta[i]=Math.round(parseInt(theta[i]) * 100) / 100
+            if(i==0)
+                val=theta[i]
+            else
+                val=val + theta[i]*features[i-1]
+        }
         var prediction="the predicted price is : "+val
         alert(prediction)
     }
