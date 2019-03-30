@@ -1,0 +1,68 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}This is an example page{% endblock %}
+
+{% block navbar %}
+<div class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">LR</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{url_for('index')}}">home</a></li>
+                <li><a href="{{url_for('train')}}">train</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                <li><a href="localhost:5000">home</a></li>
+                <li><a href="{{url_for('train')}}">train</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+                </ul>
+            </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6 bg-primary" style="padding:20px;color:white;">
+        <h1>Linear regression</h1>
+        <h5>Upload your dataSet to train the linear regression model the supported data format is .csv it should be like this :</h5>
+        <h5>feature1,feature2 ... featuren n,label</h5>
+        <form method="post" action="{{url_for('upload')}}" enctype="multipart/form-data">
+            <div class="row" style="padding-bottom:50px;padding-top:50px;">
+                <div class="col-md-2">
+                    <label for="">Data name</label>
+                </div>
+                <div class="col-md-9">
+                    <input type="text" name="name" class="form-control">
+                </div>
+            </div>
+            <div class="row" style="padding-bottom:50px;">
+                <div class="col-md-2">
+                    <label for="">Data Set</label>
+                </div>
+                <div class="col-md-9">
+                    <input type="file" name="dataset" class="form-control">
+                </div>
+            </div>
+            <div class="rox">
+                <div class="col-md-3">
+                    <button class="btn" style="background-color:seagreen">Upload</button>
+                </div>
+            </div>
+        </form>
+      </div>
+      <div class="col-md-2"></div>
+</div>
+{% endblock %}

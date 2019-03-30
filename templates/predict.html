@@ -1,0 +1,75 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}This is an example page{% endblock %}
+
+{% block navbar %}
+<div class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">LR</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{url_for('index')}}">home</a></li>
+                <li><a href="{{url_for('train')}}">train</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                <li><a href="localhost:5000">home</a></li>
+                <li><a href="{{url_for('train')}}">train</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+                </ul>
+            </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block content %}
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 bg-primary" style="padding:20px;color:white;">
+      <h1>Linear regression</h1>
+      <h5>You model has been trained succefuly</h5>
+      {% for i in range(0,feat) %}
+      <div class="row">
+            <div class="col-md-2">
+                <label for="">Feature {{i}}</label>
+            </div>
+            <div class="col-md-8">
+                <input type="text" id="feat{{i}}" class="form-control">
+            </div>
+        </div>
+        {% endfor %}
+    <button type="submit" class="btn btn-warning" onclick="predict()">Predict</button>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+{% endblock %}
+{% block scripts %}
+{{super()}}
+<script>
+    function predict()
+    {   
+        var featureNumber=parseInt('{{feat}}')
+
+        for (let i = 0; i < featureNumber; i++) 
+        {
+            
+        }
+        var room=$('#room').val()
+        var size=$('#size').val()
+        theta="{{theta}}".split(',')
+        var val=parseFloat(theta[0])+parseFloat(theta[1])*size+parseFloat(theta[2])*room
+        var prediction="the predicted price is : "+val
+        alert(prediction)
+    }
+</script>
+{% endblock %}
