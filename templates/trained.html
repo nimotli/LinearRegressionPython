@@ -17,15 +17,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="{{url_for('index')}}">home</a></li>
                 <li><a href="{{url_for('train')}}">train</a></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                <li><a href="localhost:5000">home</a></li>
-                <li><a href="{{url_for('train')}}">train</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-                </ul>
-            </li>
+                <li><a href="{{url_for('predict')}}">predict</a></li>
             </ul>
         </div>
     </div>
@@ -38,6 +30,7 @@
     <div class="col-md-6 bg-primary" style="padding:20px;color:white;">
       <h1>Linear regression</h1>
       <h5>You model has been trained succefuly</h5>
+      <h5>Go now to the predict page to <a href="{{url_for('predict')}}">predict</a> the value of new features</h5>
       
     </div>
     <div class="col-md-2"></div>
